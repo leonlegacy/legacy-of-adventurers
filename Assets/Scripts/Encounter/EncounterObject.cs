@@ -21,10 +21,15 @@ public class EncounterObject : ScriptableObject
     [Multiline(3)]
     public string FailDescription;
 
-    [Header("Result")]
+    [Header("SucessResult")]
     public int Damage;
     public int Pressure;
     public int Gold;
+
+    [Header("FailedResult")]
+    public int FailDamage;
+    public int FailPressure;
+    public int FailGold;
 }
 
 public enum EncounterType
