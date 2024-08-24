@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class MissionResult
@@ -67,7 +68,7 @@ public class MissionManager
         mission.SuccessReputation = Random.Range(1, 10);
         mission.FailReputation = Random.Range(1, 10);
 
-        MissionManager.CurrentMission = mission;
+        CurrentMission = mission;
         return mission;
     }
 
@@ -79,8 +80,11 @@ public class MissionManager
     {
         var miss = CurrentMission;
         var result = new MissionResult();
+        // 任務是否成功
         result.IsSuccess = isSuccess;
+        // 任務獎勵(酬勞 * 抽成比例)
         result.Reward = isSuccess ? (int)(miss.Reward * miss.SuccessRate) : 0;
+        // 任務聲望
         result.Reputation = isSuccess ? miss.SuccessReputation : miss.FailReputation;
         return result;
     }
