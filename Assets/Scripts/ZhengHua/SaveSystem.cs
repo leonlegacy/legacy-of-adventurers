@@ -34,6 +34,18 @@ namespace ZhengHua
                 };
             }
         }
+
+        public bool IsFirstEnterGame 
+        { 
+            get
+            {
+                return PlayerPrefs.GetInt("FirstEnterGame", 1) == 1;
+            }
+            set
+            {
+                PlayerPrefs.SetInt("FirstEnterGame", value ? 1 : 0);
+            }
+        }
     }
 
     public struct PlayerData

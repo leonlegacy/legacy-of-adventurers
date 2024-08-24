@@ -7,13 +7,23 @@ namespace ZhengHua
     {
         [SerializeField]
         private string MenuSceneName = "MenuScene";
+        /// <summary>
+        /// 用於觸發當第一次進入遊戲時的事件
+        /// </summary>
         public Action OnFirstEnterGameOnClick;
+        /// <summary>
+        /// 進入任務所需要的隊伍人數
+        /// </summary>
+        public int PartyCount = 4;
 
         public override void Awake()
         {
             base.Awake();
 
-            Register(GameState.FirstEnterGame, FirstEnterGameOnEnter, FirstEnterGameOnUpdate, FirstEnterGameOnEnd);
+            if (SaveSystem.instance.IsFirstEnterGame)
+            {
+                Register(GameState.FirstEnterGame, FirstEnterGameOnEnter, FirstEnterGameOnUpdate, FirstEnterGameOnEnd);
+            }
             Register(GameState.Start, StartOnEnter, StartOnUpdate, StartOnEnd);
             Register(GameState.ChooseMission, ChooseMissionOnEnter, ChooseMissionOnUpdate, ChooseMissionOnEnd);
             Register(GameState.InMission, InMissionOnEnter, InMissionOnUpdate, InMissionOnEnd);
@@ -23,9 +33,9 @@ namespace ZhengHua
         #region FirstEnterGame
         private void FirstEnterGameOnEnter()
         {
-            Debug.Log("FirstEnterGame");
             OnFirstEnterGameOnClick += GoToStart;
             FirstEnterGameCanvas.instance.Show();
+            SaveSystem.instance.IsFirstEnterGame = false;
         }
 
         private void FirstEnterGameOnUpdate()
@@ -40,7 +50,7 @@ namespace ZhengHua
         private void GoToStart()
         {
             Debug.Log("GoToStart");
-            ChangeState(GameState.ChooseMission);
+            ChangeState(GameState.Start);
         }
         #endregion
 
@@ -49,7 +59,7 @@ namespace ZhengHua
         {
             Debug.Log("Start");
             this.SaveGame();
-            ChangeState(GameState.ChooseMission);
+            ShowStartAnimation();
         }
 
         private void StartOnUpdate()
@@ -61,6 +71,16 @@ namespace ZhengHua
         {
 
         }
+
+        private void ShowStartAnimation()
+        {
+            Invoke("ShowStartAnimationEnd", 0f);
+        }
+
+        private void ShowStartAnimationEnd()
+        {
+            ChangeState(GameState.ChooseMission);
+        }
         #endregion
 
         #region ChooseMission
@@ -68,15 +88,15 @@ namespace ZhengHua
         {
             Debug.Log("ChooseMission");
             /// 隊伍需要的人員數量
-            int partyCount = 4;
+            PartyCount = 4;
 
             ///初始化玩家隊伍
-            AdvManager.instance.PartyInitialize(partyCount);
+            AdvManager.instance.PartyInitialize(PartyCount);
 
             /// 初始化招募人員
             AdvManager.instance.GenerateCandidates();
 
-            AdventurerCanvas.instance.Show();
+            GameMainCanvas.instance.Show();
         }
 
         private void ChooseMissionOnUpdate()
@@ -142,6 +162,14 @@ namespace ZhengHua
         public void BackToMenu()
         {
             LoadManager.instance.LoadScene(MenuSceneName);
+        }
+
+        public bool ParayIsFull
+        {
+            get
+            {
+                return GameMainCanvas.instance.hireCount == PartyCount;
+            }
         }
     }
 
