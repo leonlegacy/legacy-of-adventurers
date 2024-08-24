@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace Tachibana
+{ 
 public enum EncounterType
 {
     // 戰鬥
@@ -58,12 +60,12 @@ public class Encounter
 
 }
 
-public class EncounterManager
-{
+    public class EncounterManager
+    {
 
-    public static Encounter currentEncounter { get; set; }
+        public static Encounter currentEncounter { get; set; }
 
-    public static List<Encounter> Encounters = new List<Encounter> {
+        public static List<Encounter> Encounters = new List<Encounter> {
         new Encounter {
             title = "怪物",
             description = "你遇到了一隻怪物，要不要攻擊呢？",
@@ -161,25 +163,25 @@ public class EncounterManager
         }
     };
 
-    /**
-    * 獲取隨機遭遇
-    * @param index 是否指定遭遇索引
-    */
-    public static Encounter GetRandomEncounter(int index = -1)
-    {
-        Encounter encounter = index == -1 ? Encounters[Random.Range(0, Encounters.Count)] : Encounters[index];
-        currentEncounter = encounter;
-        return encounter;
-    }
+        /**
+        * 獲取隨機遭遇
+        * @param index 是否指定遭遇索引
+        */
+        public static Encounter GetRandomEncounter(int index = -1)
+        {
+            Encounter encounter = index == -1 ? Encounters[Random.Range(0, Encounters.Count)] : Encounters[index];
+            currentEncounter = encounter;
+            return encounter;
+        }
 
-    /**
-    * 選項結果
-    * @param index 選項索引(理論上是 0 or 1)
-    */
-    public static EncounterResult isOptionSuccess(int index)
-    {
-        var option = currentEncounter.options[index];
-        return Random.Range(0f, 1f) < option.successRate ? option.successResult : option.failResult;
+        /**
+        * 選項結果
+        * @param index 選項索引(理論上是 0 or 1)
+        */
+        public static EncounterResult isOptionSuccess(int index)
+        {
+            var option = currentEncounter.options[index];
+            return Random.Range(0f, 1f) < option.successRate ? option.successResult : option.failResult;
+        }
     }
-
 }
