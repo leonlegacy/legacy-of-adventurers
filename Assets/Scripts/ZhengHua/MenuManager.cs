@@ -5,7 +5,7 @@ namespace ZhengHua
     public class MenuManager : SingtonMono<MenuManager>
     {
         [SerializeField]
-        private string GameSceneName = "Game";
+        private string GameSceneName = "GameScene";
 
         private MenuButton newGameButton;
         private MenuButton continueButton;
