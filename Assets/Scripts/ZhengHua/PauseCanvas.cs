@@ -13,8 +13,13 @@ namespace ZhengHua
         public override void Awake()
         {
             base.Awake();
-            backMenuButton = GameObject.Find("BackMenu").GetComponent<MenuButton>();
-            continueButton = GameObject.Find("Continue").GetComponent<MenuButton>();
+            foreach (Transform child in transform.GetComponentsInChildren<Transform>())
+            {
+                if(child.name == "BackMenu")
+                    backMenuButton = child.GetComponent<MenuButton>();
+                else if (child.name == "Continue")
+                    continueButton = child.GetComponent<MenuButton>();
+            }
         }
         
         public void Start()
