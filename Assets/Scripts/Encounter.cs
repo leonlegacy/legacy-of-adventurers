@@ -1,5 +1,4 @@
-using System.IO;
-using Unity.VisualScripting;
+using System.Collections.Generic;
 using UnityEngine;
 
 public enum EncounterType
@@ -48,6 +47,9 @@ public class Encounter
     // 標題
     public string title;
 
+    // 圖片ID
+    public int spriteID;
+
     // 描述
     public string description;
 
@@ -61,10 +63,11 @@ public class EncounterManager
 
     public static Encounter currentEncounter { get; set; }
 
-    public static Encounter[] Encounters = new Encounter[] {
+    public static List<Encounter> Encounters = new List<Encounter> {
         new Encounter {
             title = "怪物",
             description = "你遇到了一隻怪物，要不要攻擊呢？",
+            spriteID = 0,
             options = new EncounterOption[] {
                 new EncounterOption {
                     title = "攻擊",
@@ -103,6 +106,7 @@ public class EncounterManager
         new Encounter {
             title = "寶箱",
             description = "發現一個寶箱，要不要打開呢？",
+            spriteID = 0,
             options = new EncounterOption[] {
                 new EncounterOption {
                     title = "打開",
@@ -141,6 +145,7 @@ public class EncounterManager
         new Encounter{
             title = "湖中女神",
             description = "在某個房間中間有做小湖，從湖中水面緩緩出現一位女神，女神對你施予治癒術",
+            spriteID = 0,
             options = new EncounterOption[] {
                 new EncounterOption {
                     title = "受到了治癒",
@@ -162,8 +167,8 @@ public class EncounterManager
     */
     public static Encounter GetRandomEncounter(int index = -1)
     {
-        Encounter encounter = index == -1 ? Encounters[Random.Range(0, Encounters.Length)] : Encounters[index];
-        this.currentEncounter = encounter;
+        Encounter encounter = index == -1 ? Encounters[Random.Range(0, Encounters.Count)] : Encounters[index];
+        currentEncounter = encounter;
         return encounter;
     }
 
@@ -173,7 +178,7 @@ public class EncounterManager
     */
     public static EncounterResult isOptionSuccess(int index)
     {
-        var option = this.currentEncounter.options[index];
+        var option = currentEncounter.options[index];
         return Random.Range(0f, 1f) < option.successRate ? option.successResult : option.failResult;
     }
 
