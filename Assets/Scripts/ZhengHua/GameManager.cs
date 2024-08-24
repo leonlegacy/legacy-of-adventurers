@@ -1,77 +1,115 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 namespace ZhengHua
 { 
-    public class GameManager : SingtonMono<GameManager>
+    public class GameManager : FiniteStateMachine<GameManager, GameState>
     {
         [SerializeField]
         private string MenuSceneName = "MenuScene";
-
-        public GameState gameState = GameState.None;
+        public Action OnFirstEnterGameOnClick;
 
         public override void Awake()
         {
             base.Awake();
-        }
-        
-        public void Start()
-        {
-            bool isFirstEnter = PlayerPrefs.GetInt("FirstIn", 0) == 0;
-            if (isFirstEnter)
-            {
-                gameState = GameState.FirstEnterGame;
-            }
-            else
-            {
-                gameState = GameState.Start;
-            }
+
+            Register(GameState.FirstEnterGame, FirstEnterGameOnEnter, FirstEnterGameOnUpdate, FirstEnterGameOnEnd);
+            Register(GameState.Start, StartOnEnter, StartOnUpdate, StartOnEnd);
+            Register(GameState.ChooseMission, ChooseMissionOnEnter, ChooseMissionOnUpdate, ChooseMissionOnEnd);
+            Register(GameState.InMission, InMissionOnEnter, InMissionOnUpdate, InMissionOnEnd);
+            Register(GameState.MissionResult, MissionResultOnEnter, MissionResultOnUpdate, MissionResultOnEnd);
         }
 
-        public void Update()
+        #region FirstEnterGame
+        private void FirstEnterGameOnEnter()
         {
-            switch (gameState)
-            {
-                case GameState.FirstEnterGame:
-                    ShowGameTips();
-                    break;
-                case GameState.Start:
-                    ShowPause();
-                    break;
-                case GameState.ChooseMission:
-                    ShowPause();
-                    break;
-                case GameState.EnterMission:
-                    break;
-                case GameState.InMission:
-                    ShowPause();
-                    break;
-                case GameState.ChooseMissionEvent:
-                    break;
-                case GameState.EndMission:
-                    break;
-                case GameState.MissionResult:
-                    break;
-                case GameState.Pause:
-                    break;
-            }
+            Debug.Log("FirstEnterGame");
+            OnFirstEnterGameOnClick += GoToStart;
         }
 
-        /// <summary>
-        /// 第一次進入遊戲的提示
-        /// </summary>
-        public void ShowGameTips()
-        {
-            Debug.Log("ShowGameTips");
-            gameState = GameState.Start;
-        }
-
-        /// <summary>
-        /// 顯示選擇任務的視窗
-        /// </summary>
-        public void ShowMission()
+        private void FirstEnterGameOnUpdate()
         {
 
         }
+
+        private void FirstEnterGameOnEnd()
+        {
+            OnFirstEnterGameOnClick -= GoToStart;
+        }
+
+        private void GoToStart()
+        {
+            ChangeState(GameState.Start);
+        }
+        #endregion
+
+        #region Start
+        private void StartOnEnter()
+        {
+            this.SaveGame();
+            ChangeState(GameState.ChooseMission);
+        }
+
+        private void StartOnUpdate()
+        {
+            ShowPause();
+        }
+
+        private void StartOnEnd()
+        {
+
+        }
+        #endregion
+
+        #region ChooseMission
+        private void ChooseMissionOnEnter()
+        {
+            Debug.Log("ChooseMission");
+        }
+
+        private void ChooseMissionOnUpdate()
+        {
+
+        }
+
+        private void ChooseMissionOnEnd()
+        {
+
+        }
+        #endregion
+
+        #region InMission
+        private void InMissionOnEnter()
+        {
+            Debug.Log("InMission");
+        }
+
+        private void InMissionOnUpdate()
+        {
+        }
+
+        private void InMissionOnEnd()
+        {
+
+        }
+        #endregion
+
+        #region MissionResult
+        private void MissionResultOnEnter()
+        {
+            Debug.Log("MissionResult");
+        }
+
+        private void MissionResultOnUpdate()
+        {
+
+        }
+
+        private void MissionResultOnEnd()
+        {
+
+        }
+        #endregion
 
         public void ShowPause()
         {
@@ -97,15 +135,25 @@ namespace ZhengHua
 
     public enum GameState
     {
-        None,
+        /// <summary>
+        /// 第一次進入遊戲
+        /// </summary>
         FirstEnterGame,
+        /// <summary>
+        /// 遊戲開始
+        /// </summary>
         Start,
+        /// <summary>
+        /// 選擇任務、角色
+        /// </summary>
         ChooseMission,
-        EnterMission,
+        /// <summary>
+        /// 進入任務
+        /// </summary>
         InMission,
-        ChooseMissionEvent,
-        EndMission,
+        /// <summary>
+        /// 任務結算
+        /// </summary>
         MissionResult,
-        Pause,
     }
 }

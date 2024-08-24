@@ -10,8 +10,6 @@ namespace ZhengHua
         public MenuButton backMenuButton;
         public MenuButton continueButton;
 
-        public GameState gameState = GameState.None;
-
         public override void Awake()
         {
             base.Awake();
