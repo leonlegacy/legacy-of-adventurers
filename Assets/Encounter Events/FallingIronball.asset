@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c3cdc2eb5d9000a4c947a6daed9ac3fe, type: 3}
-  m_Name: Bed
+  m_Name: FallingIronball
   m_EditorClassIdentifier: 
-  Title: "\u6EAB\u6696\u800C\u8212\u9069\u7684\u5E8A"
-  Description: "\u6C92\u6709\u4EBA\u77E5\u9053\u7232\u4EC0\u9EBD\u9019\u6703\u6709\u4E00\u5F35\u6070\u5230\u597D\u8655\u7684\u5E8A\u7684\u5E8A"
+  Title: "\u5929\u964D\u9435\u7403"
+  Description: "RUN\uFF01"
   Image: {fileID: 0}
   EffectAllMembers: 1
-  SuccessRate: 0.5
-  SuccessDescription: Zzzz
-  FailDescription: "\u7CDF\u4E86\u7761\u904E\u982D\u4E86\uFF01\u6211\u7684\u5168\u52E4\u734E\u91D1\uFF01"
-  Damage: -50
-  Pressure: -50
+  SuccessRate: 0.1
+  SuccessDescription: "\uFF08\u4F3C\u4E4E\u5728\u8DD1\u6B65\uFF0C\u6C92\u7A7A\u56DE\u5831\uFF0C\u4F46\u4E5D\u6B7B\u4E00\u751F\uFF09"
+  FailDescription: "\uFF08\u4F3C\u4E4E\u5728\u8DD1\u6B65\uFF0C\u6C92\u7A7A\u56DE\u5831\uFF09"
+  Damage: 0
+  Pressure: 50
   Gold: 0
-  FailDamage: -50
+  FailDamage: 500
   FailPressure: 0
   FailGold: 0

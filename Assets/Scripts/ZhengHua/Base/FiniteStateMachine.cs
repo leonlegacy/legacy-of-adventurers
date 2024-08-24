@@ -40,6 +40,7 @@ namespace ZhengHua
                 end.Invoke();
             }
             nowState = targetState;
+            nowStateFrame = 0;
         }
 
         public virtual void Start()
