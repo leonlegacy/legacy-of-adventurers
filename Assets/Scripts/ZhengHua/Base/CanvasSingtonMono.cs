@@ -27,7 +27,7 @@ namespace ZhengHua
         /// <summary>
         /// 顯示畫布
         /// </summary>
-        public void Show()
+        public virtual void Show()
         {
             gameObject.SetActive(true);
         }

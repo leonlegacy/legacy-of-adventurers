@@ -25,11 +25,11 @@ namespace ZhengHua
         {
             Debug.Log("FirstEnterGame");
             OnFirstEnterGameOnClick += GoToStart;
+            FirstEnterGameCanvas.instance.Show();
         }
 
         private void FirstEnterGameOnUpdate()
         {
-
         }
 
         private void FirstEnterGameOnEnd()
@@ -39,13 +39,15 @@ namespace ZhengHua
 
         private void GoToStart()
         {
-            ChangeState(GameState.Start);
+            Debug.Log("GoToStart");
+            ChangeState(GameState.ChooseMission);
         }
         #endregion
 
         #region Start
         private void StartOnEnter()
         {
+            Debug.Log("Start");
             this.SaveGame();
             ChangeState(GameState.ChooseMission);
         }
@@ -65,6 +67,16 @@ namespace ZhengHua
         private void ChooseMissionOnEnter()
         {
             Debug.Log("ChooseMission");
+            /// 隊伍需要的人員數量
+            int partyCount = 4;
+
+            ///初始化玩家隊伍
+            AdvManager.instance.PartyInitialize(partyCount);
+
+            /// 初始化招募人員
+            AdvManager.instance.GenerateCandidates();
+
+            AdventurerCanvas.instance.Show();
         }
 
         private void ChooseMissionOnUpdate()

@@ -1,9 +1,16 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
+using ZhengHua;
 
-public class AdvManager : MonoBehaviour
+public class AdvManager : SingtonMono<AdvManager>
 {
+    /// <summary>
+    /// 可招募人員
+    /// </summary>
     public Adventurer[] Candidates;
+    /// <summary>
+    /// 玩家隊伍
+    /// </summary>
     public List<Adventurer> PartyMembers;
 
     public bool[] Selections = new bool[10];
@@ -11,6 +18,10 @@ public class AdvManager : MonoBehaviour
     private int requiredMembers = 0;
     private int selectedMembers = 0;
 
+    /// <summary>
+    /// 初始化招募隊伍
+    /// </summary>
+    /// <param name="_requiredMembers"></param>
     public void PartyInitialize(int _requiredMembers)
     {
         // This is called after a mission is selected.
@@ -24,6 +35,9 @@ public class AdvManager : MonoBehaviour
         PartyMembers = new List<Adventurer>();
     }
 
+    /// <summary>
+    /// 初始化招募人員
+    /// </summary>
     public void GenerateCandidates()
     {
         //Generate 10 candidates for player to select.
@@ -46,6 +60,10 @@ public class AdvManager : MonoBehaviour
         }
     }
     
+    /// <summary>
+    /// 選擇招募人員
+    /// </summary>
+    /// <param name="id"></param>
     public void SelectCandidate(int id)
     {
         //This is called by button for each candidate.
@@ -60,6 +78,9 @@ public class AdvManager : MonoBehaviour
         selectedMembers = (Selections[id]) ? selectedMembers + 1 : selectedMembers - 1;
     }
 
+    /// <summary>
+    /// 完成隊伍指派
+    /// </summary>
     public void AssignParty()
     {
         //This is called when party members are all set.
