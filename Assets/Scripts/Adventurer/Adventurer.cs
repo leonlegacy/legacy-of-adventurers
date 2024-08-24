@@ -7,8 +7,8 @@ public class Adventurer
     public bool IsSelected;
     public int Health;
     public int Pressure;
-    public int Salary;
-    public int Worth;
+    public int Cost;
+    public int Legacy;
     public UnityEngine.Sprite avatar;
 
     public Adventurer()
@@ -17,7 +17,7 @@ public class Adventurer
         IsSelected = false;
         Health = 0;
         Pressure = 0;
-        Salary = 0;
-        Worth = 0;
+        Cost = 0;
+        Legacy = 0;
     }
 }

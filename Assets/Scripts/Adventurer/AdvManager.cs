@@ -34,7 +34,15 @@ public class AdvManager : MonoBehaviour
         for(int i=0; i<10; i++)
         {
             Candidates[i] = new Adventurer();
-            Candidates[i].Name = nameGenerator.RandomName();
+            var candidate = Candidates[i];
+            candidate.Name = nameGenerator.RandomName();
+            candidate.Health = Random.Range(1, 20);
+            candidate.Cost = (int)(candidate.Health * 10);
+            candidate.Legacy = Random.Range(100, 250);
+
+            //hp: 1 - 20
+            //cost: 1:10 hp
+            //worth: 100 - 250
         }
     }
     
