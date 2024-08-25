@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
-    public AdvManager adventurerManager;
+    public MissionManager Mission;
     public EncounterUI Ui;
     public EncounterObject[] EncounterEvents;
 
     private EncounterObject occuredEvent;
-    private int lootedGold = 0;
+    public int lootedGold = 0;
 
     private enum State
     {
@@ -18,20 +18,11 @@ public class EncounterManager : MonoBehaviour
         Result,
         ResultLog,
         Retreat,
+        PartyWipedout
     }
 
     private State currentState = State.Waiting;
     private string resultLog = "";
-
-    /*
-     * Get random encounter.
-     * Display encounter.
-     * Wait for player.
-     * Read player action.
-     * Result feedback.
-     * Effect player.
-     * Check party members.
-     */
 
     private void Start()
     {
@@ -59,10 +50,12 @@ public class EncounterManager : MonoBehaviour
             return;
 
         // Party retreat.
+        Mission.MissionAbort();
     }
 
     public void OnContinue()
     {
+        
         ContinueMission();
     }
 
@@ -95,31 +88,39 @@ public class EncounterManager : MonoBehaviour
         resultLog += EffectParty(isEffectAll, effectDamage, effectPressure);
 
         Debug.Log(resultLog);
+        if (resultLog == "")
+            resultLog = "沒有什麼特別的事發生";
         Ui.SetResultLog(resultLog);
-
+        Mission.LootedGold = lootedGold;
         currentState = State.Result;
         DisplayResult(effectDesc);
     }
 
     private string EffectParty(bool isEffectAll, int damage, int pressure)
     {
-        List<Adventurer> members = adventurerManager.PartyMembers;
+        List<Adventurer> members = AdvManager.instance.PartyMembers;
         string memberStatus = "";
         if(isEffectAll)
         {
-            memberStatus += "全員增加" + pressure + " 點壓力\n";
-            memberStatus += "全員受到" + damage + " 點傷害\n";
+            if(pressure>0)
+                memberStatus += "全員增加" + pressure + " 點壓力\n";
+            if(damage>0)
+                memberStatus += "全員受到" + damage + " 點傷害\n";
             members.ForEach(member =>
             {
+                member.Pressure += pressure;
                 member.Health -= damage;
             });
         }
         else
         {
             int index = Random.Range(0, members.Count);
+            members[index].Pressure += pressure;
             members[index].Health -= damage;
-            if(damage > 0)
-                memberStatus += members[index].Name + " 受到" + damage + "點傷害\n";
+            if (pressure > 0)
+                memberStatus += members[index].Name + " 增加" + pressure + " 點壓力\n";
+            if (damage > 0)
+                memberStatus += members[index].Name + " 受到" + damage + " 點傷害\n";
         }
 
         foreach(var member in members.ToList())
@@ -127,6 +128,7 @@ public class EncounterManager : MonoBehaviour
             if (member.Health <= 0)
             {
                 memberStatus += member.Name + " 已陣亡\n";
+                Mission.LegacyGain += member.Legacy;
                 members.Remove(member);
             }
         }
@@ -150,10 +152,14 @@ public class EncounterManager : MonoBehaviour
         }
         else if (currentState == State.ResultLog)
         {
-            if(adventurerManager.PartyMembers.Count != 0)
+            if(AdvManager.instance.PartyMembers.Count != 0)
             {
+                UpdateReport();
+                if (!Mission.MissionContinue())
+                    return;
+
                 currentState = State.Waiting;
-                // Show Result.
+                // Check in Mission
                 Ui.ShowButton(Ui.BtnExecute);
                 Ui.ShowButton(Ui.BtnRetreat);
                 Ui.HideButton(Ui.BtnContinue);
@@ -164,7 +170,26 @@ public class EncounterManager : MonoBehaviour
             {
                 //GameOver.
                 Ui.SetResultLog("小隊全員陣亡，你帶著隊員們遺留下來的裝備和財物撤離。雖然任務沒有完成，但你得到了更有價值的遺產。");
+                currentState = State.PartyWipedout;
             }
         }
+        else if(currentState == State.PartyWipedout)
+        {
+            //Mission failed.
+            Mission.MissionFailed();
+        }
+    }
+
+    private void UpdateReport()
+    {
+        Mission.Report.LootGold = lootedGold;
+        Mission.Report.TotalLegacy = Mission.LegacyGain;
+
+        int totalPressure = 0;
+        foreach(var member in AdvManager.instance.PartyMembers.ToList())
+        {
+            totalPressure += member.Pressure;
+        }
+        Mission.Report.TotalPressure = totalPressure;
     }
 }
