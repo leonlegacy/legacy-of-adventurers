@@ -6,14 +6,14 @@ using ZhengHua;
 public class BGMManager : SingtonMono<BGMManager>
 {
 
-    public AudioSource AudioSource;
+    private AudioSource AudioSource;
     public AudioClip VillageBgm;
     public AudioClip EncounterBgm;
 
     public override void Awake()
     {
         base.Awake();
-        AudioSource = gameObject.GetComponent<AudioSource>();
+        AudioSource = gameObject.AddComponent<AudioSource>();
         AudioSource.playOnAwake = false;
     }
 
