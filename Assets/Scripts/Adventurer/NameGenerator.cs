@@ -2,30 +2,30 @@ public class NameGenerator
 {
     string[] firstNames = new string[100]
     {
-        "Liam", "Noah", "Oliver", "Elijah", "James", "William", "Benjamin", "Lucas", "Henry", "Alexander",
-        "Mason", "Michael", "Ethan", "Daniel", "Jacob", "Logan", "Jackson", "Levi", "Sebastian", "Mateo",
-        "Jack", "Owen", "Theodore", "Aiden", "Samuel", "David", "Joseph", "Carter", "Wyatt", "John",
-        "Matthew", "Luke", "Grayson", "Isaac", "Gabriel", "Julian", "Leo", "Hudson", "Anthony", "Dylan",
-        "Ezra", "Thomas", "Charles", "Christopher", "Jaxon", "Cameron", "Maverick", "Ryan", "Zachary", "Nolan",
-        "Eli", "Jameson", "Logan", "Jackson", "Miles", "Connor", "Aaron", "Adam", "Evan", "Jesse",
-        "Austin", "Mason", "Andrew", "Elliot", "Jordan", "Brayden", "Nathan", "Caleb", "Hunter", "Christian",
-        "Xander", "Giovanni", "Josiah", "Isaiah", "Jaxon", "Robert", "Lincoln", "Thomas", "Ezekiel", "Landon",
-        "Elliot", "Kai", "Zayden", "Asher", "Colton", "Derek", "Gavin", "Chase", "Milo", "Bryson",
-        "Brody", "Nolan", "Riley", "Harrison", "Nico", "Weston", "Jace", "Karter", "Sawyer", "Jasper"
+        "連恩", "諾亞", "奧利弗", "以利亞", "詹姆斯", "威廉", "本傑明", "盧卡斯", "亨利", "亞歷山大",
+        "梅森", "邁克爾", "伊森", "丹尼爾", "雅各布", "洛根", "傑克遜", "利維", "塞巴斯蒂安", "馬特奧",
+        "傑克", "歐文", "西奧多", "艾登", "塞繆爾", "大衛", "約瑟夫", "卡特", "懷亞特", "約翰",
+        "馬修", "盧克", "格雷森", "以撒", "加布里埃爾", "朱利安", "利奧", "哈德森", "安東尼", "迪倫",
+        "以斯拉", "托馬斯", "查爾斯", "克里斯托弗", "傑克森", "卡梅隆", "梅弗里克", "瑞安", "紮卡里", "諾蘭",
+        "以利", "詹姆森", "洛根", "傑克遜", "邁爾斯", "康納", "亞倫", "亞當", "埃文", "傑西",
+        "奧斯汀", "梅森", "安德魯", "艾略特", "喬登", "布雷登", "內森", "卡勒布", "亨特", "克里斯蒂安",
+        "澤維爾", "喬瓦尼", "約西亞", "以賽亞", "傑克森", "羅伯特", "林肯", "托馬斯", "以西結", "蘭登",
+        "艾略特", "凱", "澤登", "阿舍爾", "科爾頓", "德里克", "加文", "蔡斯", "米洛", "布賴森",
+        "布羅迪", "諾蘭", "賴利", "哈里森", "尼科", "韋斯頓", "傑斯", "卡特", "索耶", "賈斯珀"
     };
-
+    
     string[] lastNames = new string[100]
     {
-        "Smith", "Johnson", "Williams", "Jones", "Brown", "Davis", "Miller", "Wilson", "Moore", "Taylor",
-        "Anderson", "Thomas", "Jackson", "White", "Harris", "Martin", "Thompson", "Garcia", "Martinez", "Robinson",
-        "Clark", "Rodriguez", "Lewis", "Lee", "Walker", "Hall", "Allen", "Young", "King", "Wright",
-        "Scott", "Torres", "Nguyen", "Hill", "Adams", "Baker", "Nelson", "Carter", "Mitchell", "Perez",
-        "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins", "Stewart", "Sanchez",
-        "Morris", "Rogers", "Reed", "Cook", "Morgan", "Bell", "Murphy", "Bailey", "Rivera", "Cooper",
-        "Richardson", "Cox", "Howard", "Ward", "Flores", "James", "Butler", "Simmons", "Foster", "Gonzalez",
-        "Bryant", "Alexander", "Russell", "Griffin", "Diaz", "Hayes", "Myers", "Long", "Ward", "Jenkins",
-        "Barnes", "Hughes", "Price", "Stone", "Hunter", "Patel", "Sullivan", "Woods", "Washington", "Kennedy",
-        "Roberts", "Turner", "Phillips", "Campbell", "Parker", "Evans", "Edwards", "Collins", "Stewart", "Sanchez"
+    "史密斯", "約翰遜", "威廉姆斯", "瓊斯", "布朗", "戴維斯", "米勒", "威爾遜", "摩爾", "泰勒",
+    "安德森", "托馬斯", "傑克遜", "懷特", "哈里斯", "馬丁", "湯普森", "加西亞", "馬丁內斯", "羅賓遜",
+    "克拉克", "羅德里格斯", "劉易斯", "李", "沃克", "霍爾", "艾倫", "楊", "金", "賴特",
+    "斯科特", "托雷斯", "五十嵐", "希爾", "亞當斯", "貝克", "納爾遜", "卡特", "米切爾", "佩雷斯",
+    "羅伯茨", "特納", "菲利普斯", "坎貝爾", "帕克", "埃文斯", "愛德華茲", "柯林斯", "斯圖爾特", "桑切斯",
+    "莫里斯", "羅傑斯", "里德", "庫克", "摩根", "貝爾", "墨菲", "貝利", "里維拉", "庫珀",
+    "理查森", "考克斯", "霍華德", "沃德", "弗洛雷斯", "詹姆斯", "巴特勒", "西蒙斯", "福斯特", "岡薩雷斯",
+    "布萊恩特", "亞歷山大", "拉塞爾", "格里芬", "迪亞茲", "海斯", "邁爾斯", "龍", "沃德", "詹金斯",
+    "巴恩斯", "休斯", "普賴斯", "斯通", "亨特", "帕特爾", "沙利文", "伍茲", "華盛頓", "肯尼迪",
+    "羅伯", "特納", "菲利普斯", "坎貝爾", "帕克", "埃文斯", "愛德華茲", "柯林斯", "斯圖爾特", "桑切斯"
     };
 
     public string RandomName()
