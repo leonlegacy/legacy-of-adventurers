@@ -202,9 +202,17 @@ namespace ZhengHua
                 int row = index / 2;
                 GameObject obj = Instantiate(adverPrefab, adverContainer);
                 AdventurerItem item = obj.GetComponent<AdventurerItem>();
-                item.Init(adver.Health, UnityEngine.Random.Range(0, 2) == 1);
-                obj.transform.localPosition = new Vector3((index % 2) * spaceX, row * spaceY, 0f);
                 adverList.Add(item);
+                if (adver.Name == "Faust Li")
+                {
+                    // 特殊冒險者
+                    item.Init(adver.Health, true, Resources.Load<Sprite>("Sprites/IMG_3375"));
+                }
+                else
+                {
+                    item.Init(adver.Health, UnityEngine.Random.Range(0, 2) == 1);
+                }
+                obj.transform.localPosition = new Vector3((index % 2) * spaceX, row * spaceY, 0f);
             }
         }
         #endregion

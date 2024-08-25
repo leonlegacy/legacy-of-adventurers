@@ -63,11 +63,11 @@ public class AdvManager : SingtonMono<AdvManager>
 
     /// <summary>
     /// (橘之介寫的) 特別的冒險者
-    /// 有 14% 的機率出現，血量 2014，價格 120，遺產 428 或 429，名字叫 Faust Li
+    /// 有 28% 的機率出現，血量 2014，價格 120，遺產 428 或 429，名字叫 Faust Li
     /// </summary>
     private void specialAdventurer()
     {
-        if (Random.Range(0, 100) < 14)
+        if (Random.Range(0, 50) < 14)
         {
             var adventurer = new Adventurer();
             adventurer.Name = "Faust Li";
