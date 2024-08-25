@@ -70,7 +70,7 @@ namespace ZhengHua
             _runMissionCount = 0;
             _totalMissionCount = totalMissionCount;
             progressBar.fillAmount = 0;
-            progressRunImage.localPosition = new Vector3(0, progressRunImage.localPosition.y, 0);
+            //progressRunImage.localPosition = new Vector3(0, progressRunImage.localPosition.y, 0);
         }
 
         public override void Hide()
@@ -92,7 +92,7 @@ namespace ZhengHua
             reputationImage.fillAmount = (float)SaveSystem.instance.playerData.reputation / 100;
 
             progressBar.fillAmount = (float)_runMissionCount / _totalMissionCount;
-            progressRunImage.localPosition = new Vector3(progressBar.rectTransform.sizeDelta.x * progressBar.fillAmount, progressRunImage.localPosition.y, 0);
+            //progressRunImage.localPosition = new Vector3(progressBar.rectTransform.sizeDelta.x * progressBar.fillAmount, progressRunImage.localPosition.y, 0);
         }
 
         public void UpdateMission()
@@ -100,7 +100,7 @@ namespace ZhengHua
             _runMissionCount += 1;
 
             progressBar.fillAmount = (float)_runMissionCount / _totalMissionCount;
-            progressRunImage.localPosition = new Vector3(progressBar.rectTransform.sizeDelta.x * progressBar.fillAmount, progressRunImage.localPosition.y, 0);
+            //progressRunImage.localPosition = new Vector3(progressBar.rectTransform.sizeDelta.x * progressBar.fillAmount, progressRunImage.localPosition.y, 0);
         }
     }
 }

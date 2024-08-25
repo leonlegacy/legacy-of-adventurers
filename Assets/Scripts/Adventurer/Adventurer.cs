@@ -10,6 +10,7 @@ public class Adventurer
     public int Cost;
     public int Legacy;
     public UnityEngine.Sprite avatar;
+    public bool isMale;
 
     public Adventurer()
     {
@@ -19,5 +20,6 @@ public class Adventurer
         Pressure = 0;
         Cost = 0;
         Legacy = 0;
+        isMale = true;
     }
 }
