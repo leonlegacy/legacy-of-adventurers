@@ -10,7 +10,9 @@ public class EncounterUI : MonoBehaviour
     public Image DisplayImage;
     public TMP_Text Title;
     public TMP_Text Description;
+    public TMP_Text Log;
     public Button BtnExecute, BtnRetreat, BtnContinue;
+    public RectTransform EventPanel, ResultPanel;
 
     public void SetUIContents(Sprite _sprite, string _title, string _description)
         => StartCoroutine(SetUIContentsIE(_sprite, _title, _description));
@@ -18,8 +20,22 @@ public class EncounterUI : MonoBehaviour
     public void SetDescription(string _description)
         => StartCoroutine(SetDescriptionIE(_description));
 
+    public void SetResultLog(string _log) => Log.text = _log;
+
     public void ShowButton(Button _btn) => _btn.gameObject.SetActive(true);
     public void HideButton(Button _btn) => _btn.gameObject.SetActive(false);
+
+    public void ShowResult()
+    {
+        EventPanel.DOAnchorPosY(-1000, 1);
+        ResultPanel.DOAnchorPosY(0, 1);
+    }
+
+    public void ShowEncounter()
+    {
+        EventPanel.DOAnchorPosY(0, 1);
+        ResultPanel.DOAnchorPosY(-1000, 1);
+    }
 
     IEnumerator SetUIContentsIE(Sprite _sprite, string _title, string _description)
     {
@@ -39,6 +55,8 @@ public class EncounterUI : MonoBehaviour
         Description.text = _des;
         Description.DOFade(1, 1f);
     }
+
+    
 
     void ShowContents()
     {
