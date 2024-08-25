@@ -6,14 +6,15 @@ using ZhengHua;
 public class BGMManager : SingtonMono<BGMManager>
 {
 
-    private AudioSource audioSource;
+    public AudioSource AudioSource;
     public AudioClip VillageBgm;
     public AudioClip EncounterBgm;
 
     public override void Awake()
     {
         base.Awake();
-        audioSource = GetComponent<AudioSource>();
+        AudioSource = gameObject.GetComponent<AudioSource>();
+        AudioSource.playOnAwake = false;
     }
 
     /**
@@ -21,7 +22,7 @@ public class BGMManager : SingtonMono<BGMManager>
     */
     public void PlayVillageBgm()
     {
-        this.playBgm(VillageBgm);
+        PlayBgm(VillageBgm);
     }
 
     /**
@@ -29,14 +30,18 @@ public class BGMManager : SingtonMono<BGMManager>
     */
     public void PlayAdventureBgm()
     {
-        this.playBgm(EncounterBgm);
+        PlayBgm(EncounterBgm);
     }
 
-    private void playBgm(AudioClip clip)
+    /**
+    * 播放指定的背景音樂
+    * @param clip 音效片段
+    */
+    public void PlayBgm(AudioClip clip)
     {
-        audioSource.clip = clip;
-        audioSource.Play();
-        audioSource.loop = true;
+        AudioSource.clip = clip;
+        AudioSource.Play();
+        AudioSource.loop = true;
     }
 
 

@@ -2,7 +2,7 @@
 using UnityEngine;
 
 namespace ZhengHua
-{ 
+{
     public class GameManager : FiniteStateMachine<GameManager, GameState>
     {
         [SerializeField]
