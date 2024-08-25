@@ -18,7 +18,7 @@ MonoBehaviour:
   EffectAllMembers: 0
   SuccessRate: 40
   SuccessDescription: "\u5C0D\u8001\u7DF4\u7684\u5C08\u5BB6\u4F86\u8AAC\uFF0C\u78BA\u5BE6\u53EA\u662F\u7167\u660E"
-  FailDescription: 
+  FailDescription: "\u5C0D\u65B0\u624B\u5192\u96AA\u5BB6\u4F86\u8AAC\uFF0C\u9B3C\u706B\u4E5F\u662F\u500B\u5927\u554F\u984C"
   Damage: 0
   Pressure: 0
   Gold: 200
