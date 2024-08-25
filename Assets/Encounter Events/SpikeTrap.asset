@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\u9677\u9631"
   Description: "\u7D93\u5178\u7684\u5C16\u523A\u9677\u9631\uFF0C\u60F3\u4E2D\u62DB\u90FD\u5F88\u96E3"
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: d903518e3f7b1b64593d0e4fb67428ed, type: 3}
   EffectAllMembers: 1
-  SuccessRate: 0.9
+  SuccessRate: 90
   SuccessDescription: "\u7E31\u8EAB\u4E00\u8E8D\uFF0C\u7C21\u7C21\u55AE\u55AE"
   FailDescription: "\u4E00\u4F4D\u5192\u96AA\u8005\u8E29\u5230\u4E86\u53F2\u840A\u59C6\u9ECF\u6DB2\uFF0C\u5931\u8DB3\u6454\u9032\u9677\u9631\u88E1\u3002\u4ED6\u7684\u6158\u53EB\u5982\u540C\u9060\u53E4\u6642\u4EE3\u7684\u767D\u8272\u76D4\u7532\u58EB\u5175\u4E00\u6A23\u6158\u70C8\u3002"
   Damage: 0
