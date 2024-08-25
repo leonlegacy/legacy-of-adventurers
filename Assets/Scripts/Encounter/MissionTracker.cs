@@ -8,17 +8,10 @@ public class MissionReport
     public int TotalPressure;
     public int TotalLegacy;
     public float shareRate;
+    public bool MissionClear = false;
     public MissionReport()
     {
 
-    }
-    public MissionReport(int loot, int reward, int pressure, int legacy, float share)
-    {
-        LootGold = loot;
-        MissionReward = reward;
-        TotalPressure = pressure;
-        TotalLegacy = legacy;
-        shareRate = share;
     }
 }
 
@@ -29,7 +22,7 @@ public class MissionManagerEvent
     public static void MissionResult(MissionReport report) => MissionResultEvent?.Invoke(report);
 }
 
-public class MissionManager : MonoBehaviour
+public class MissionTracker : MonoBehaviour
 {
     public EncounterManager encounterManager;
     public float shareRate = 0.05f;
@@ -61,12 +54,14 @@ public class MissionManager : MonoBehaviour
     private int totalGain;
 
 
-    void MissionInitialize()
+    public void MissionInitialize(int totalEncounter, int reward)
     {
         LootedGold = 0;
         LegacyGain = 0;
         totalGain = 0;
         currentEncounterIndex = 0;
+        encounterCount = totalEncounter;
+        missionReward = reward;
         Report.shareRate = shareRate;
     }
 
@@ -85,6 +80,7 @@ public class MissionManager : MonoBehaviour
     {
         Report.MissionReward = missionReward;
         Report.shareRate = shareRate;
+        Report.MissionClear = true;
         MissionManagerEvent.MissionResult(Report);
         Debug.Log("Mission Completed.");
         Debug.Log(Report);
@@ -94,6 +90,7 @@ public class MissionManager : MonoBehaviour
     {
         Report.MissionReward = 0;
         Report.shareRate = 0;
+        Report.MissionClear = false;
         MissionManagerEvent.MissionResult(Report);
         Debug.Log("Mission Failed.");
         Debug.Log(Report);
@@ -103,6 +100,7 @@ public class MissionManager : MonoBehaviour
     {
         Report.MissionReward = 0;
         Report.shareRate = shareRate;
+        Report.MissionClear = false;
         MissionManagerEvent.MissionResult(Report);
         Debug.Log("Mission Abort.");
         Debug.Log(Report);

@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class EncounterManager : MonoBehaviour
 {
-    public MissionManager Mission;
+    public MissionTracker Mission;
     public EncounterUI Ui;
     public EncounterObject[] EncounterEvents;
 
