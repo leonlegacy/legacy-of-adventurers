@@ -134,7 +134,7 @@ namespace ZhengHua
         public void InitMission(Mission mission)
         {
             missionName.text = $"任務名稱: {mission.Name}";
-            missionContent.text = $"任務內容: {mission.Description}";
+            missionContent.text = $"事件數量: {mission.AdventurerCount}";
             missionReward.text = $"任務報酬: {mission.Reward}";
             missionRank.sprite = rankSprites[mission.Difficulty];
         }

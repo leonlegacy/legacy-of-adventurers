@@ -12,6 +12,7 @@ public class AdvManager : SingtonMono<AdvManager>
     /// 玩家隊伍
     /// </summary>
     public List<Adventurer> PartyMembers;
+    public Sprite[] sprites;
 
     public bool[] Selections = new bool[10];
 
@@ -53,7 +54,9 @@ public class AdvManager : SingtonMono<AdvManager>
             candidate.Health = Random.Range(1, 120);
             candidate.Cost = (int)(candidate.Health * 10);
             candidate.Legacy = Random.Range(100, 250);
-
+            candidate.isMale = Random.Range(0, 2) == 0;
+            int index = Random.Range(0, 12);
+            candidate.avatar = sprites[(candidate.isMale ? 0 : 12) + index];
             //hp: 1 - 20
             //cost: 1:10 hp
             //worth: 100 - 250
@@ -74,6 +77,8 @@ public class AdvManager : SingtonMono<AdvManager>
             adventurer.Health = 2014;
             adventurer.Cost = 120;
             adventurer.Legacy = Random.Range(428, 429);
+            adventurer.isMale = true;
+            adventurer.avatar = Resources.Load<Sprite>("Sprites/IMG_3375");
             Candidates[0] = adventurer;
         }
 

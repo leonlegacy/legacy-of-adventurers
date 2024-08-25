@@ -194,8 +194,8 @@ namespace ZhengHua
         /// </summary>
         private void CreateAdvers()
         {
-            float spaceX = 2.3f;
-            float spaceY = 2.3f;
+            float spaceX = 1f;
+            float spaceY = 1f;
             foreach (var adver in AdvManager.instance.PartyMembers)
             {
                 int index = AdvManager.instance.PartyMembers.IndexOf(adver);
@@ -203,15 +203,7 @@ namespace ZhengHua
                 GameObject obj = Instantiate(adverPrefab, adverContainer);
                 AdventurerItem item = obj.GetComponent<AdventurerItem>();
                 adverList.Add(item);
-                if (adver.Name == "Faust Li")
-                {
-                    // 特殊冒險者
-                    item.Init(adver.Health, true, Resources.Load<Sprite>("Sprites/IMG_3375"));
-                }
-                else
-                {
-                    item.Init(adver.Health, UnityEngine.Random.Range(0, 2) == 1);
-                }
+                item.Init(adver.Health, adver.isMale, adver.avatar);
                 obj.transform.localPosition = new Vector3((index % 2) * spaceX, row * spaceY, 0f);
             }
         }

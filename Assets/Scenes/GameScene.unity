@@ -3175,6 +3175,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Candidates: []
   PartyMembers: []
+  sprites:
+  - {fileID: 1353282283, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 1253385458, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: -1363704793, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: -565665330, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 538544277, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 1861522447, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: -1546231054, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: -1350226947, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 524669726, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 156651439, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: -1375771156, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 1260275643, guid: 23d5b81be364a6f4a9ed47ec894dc25f, type: 3}
+  - {fileID: 782349018, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: -1048336607, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: -1991807045, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: -1067981092, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: -441637301, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: 195441940, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: 1418857073, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: 102728343, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: 1899645884, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: -8130477, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: -390972015, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
+  - {fileID: 1064183668, guid: c3f82d6185d9b5245bff6651f2b88a61, type: 3}
   Selections: 00000000000000000000
 --- !u!4 &809186803
 Transform:
@@ -3703,7 +3728,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1679690979}
   m_HandleRect: {fileID: 1679690978}
   m_Direction: 2
-  m_Value: 0.4999982
+  m_Value: 0.5
   m_Size: 0.9433333
   m_NumberOfSteps: 0
   m_OnValueChanged:
