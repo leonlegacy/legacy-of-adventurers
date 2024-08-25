@@ -21,8 +21,7 @@ public class BGMManager : SingtonMono<BGMManager>
     */
     public void PlayVillageBgm()
     {
-        audioSource.clip = VillageBgm;
-        audioSource.Play();
+        this.playBgm(VillageBgm);
     }
 
     /**
@@ -30,8 +29,14 @@ public class BGMManager : SingtonMono<BGMManager>
     */
     public void PlayAdventureBgm()
     {
-        audioSource.clip = EncounterBgm;
+        this.playBgm(EncounterBgm);
+    }
+
+    private void playBgm(AudioClip clip)
+    {
+        audioSource.clip = clip;
         audioSource.Play();
+        audioSource.loop = true;
     }
 
 
