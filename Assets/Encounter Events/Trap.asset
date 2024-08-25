@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\u9677\u9631"
   Description: "\u986F\u800C\u6613\u898B\u7684\u6A5F\u95DC\uFF0C\u751A\u81F3\u5F88\u96E3\u88AB\u7A31\u7232\u9677\u9631"
-  Image: {fileID: 21300000, guid: d903518e3f7b1b64593d0e4fb67428ed, type: 3}
+  Image: {fileID: 21300000, guid: 64b3a3eb4fb0047418628b64033aaf43, type: 3}
   EffectAllMembers: 0
   SuccessRate: 50
   SuccessDescription: "\u4F60\u5011\u5DE7\u5999\u7684\u907F\u904E\u9677\u9631"
