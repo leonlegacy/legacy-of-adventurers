@@ -42,7 +42,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -89,9 +89,42 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: IMG_3383_5
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 32
+        width: 1181
+        height: 830
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 80, y: 95, z: 100, w: 110}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 70a623aa7e912a1468e2e48cc3e3c914
+      internalID: -1133311938
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -102,7 +135,28 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      IMG_3383_0: 1816062035
+      IMG_3383_1: -650960176
+      IMG_3383_10: 1139909600
+      IMG_3383_11: 716202927
+      IMG_3383_12: -939292557
+      IMG_3383_13: 43042084
+      IMG_3383_14: 2052955229
+      IMG_3383_15: -701342815
+      IMG_3383_16: -91815489
+      IMG_3383_17: -1745176963
+      IMG_3383_18: -480429753
+      IMG_3383_19: -1329124948
+      IMG_3383_2: 1499777626
+      IMG_3383_20: -297490963
+      IMG_3383_3: 1546809192
+      IMG_3383_4: 1715607816
+      IMG_3383_5: -1133311938
+      IMG_3383_6: 1245912623
+      IMG_3383_7: 1587786945
+      IMG_3383_8: -479513781
+      IMG_3383_9: -1387504989
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
