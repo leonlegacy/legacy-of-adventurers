@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Title: "\u5929\u964D\u9435\u7403"
   Description: "RUN\uFF01"
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 19a6694c41ce2804ba5ebf486a4dc8b2, type: 3}
   EffectAllMembers: 1
-  SuccessRate: 0.1
+  SuccessRate: 10
   SuccessDescription: "\uFF08\u4F3C\u4E4E\u5728\u8DD1\u6B65\uFF0C\u6C92\u7A7A\u56DE\u5831\uFF0C\u4F46\u4E5D\u6B7B\u4E00\u751F\uFF09"
   FailDescription: "\uFF08\u4F3C\u4E4E\u5728\u8DD1\u6B65\uFF0C\u6C92\u7A7A\u56DE\u5831\uFF09"
   Damage: 0
