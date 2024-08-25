@@ -1,7 +1,12 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
+public class EncounterManagerEvent
+{
+    public static System.Action ExecuteEvent;
+}
 
 public class EncounterManager : MonoBehaviour
 {
@@ -42,6 +47,8 @@ public class EncounterManager : MonoBehaviour
             return;
 
         CalculateResult();
+
+        EncounterManagerEvent.ExecuteEvent?.Invoke();
     }
 
     public void OnRetreat()
@@ -82,14 +89,14 @@ public class EncounterManager : MonoBehaviour
         if(lootedGold >0)
         {
             lootedGold += effectGold;
-            resultLog += "Àò±o" + effectGold + "G\n";
+            resultLog += "ç²å¾—" + effectGold + "G\n";
         }
         
         resultLog += EffectParty(isEffectAll, effectDamage, effectPressure);
 
         Debug.Log(resultLog);
         if (resultLog == "")
-            resultLog = "¨S¦³¤°»ò¯S§Oªº¨Æµo¥Í";
+            resultLog = "æ²’æœ‰ä»€éº¼ç‰¹åˆ¥çš„äº‹ç™¼ç”Ÿ";
         Ui.SetResultLog(resultLog);
         Mission.LootedGold = lootedGold;
         currentState = State.Result;
@@ -103,9 +110,9 @@ public class EncounterManager : MonoBehaviour
         if(isEffectAll)
         {
             if(pressure>0)
-                memberStatus += "¥ş­û¼W¥[" + pressure + " ÂIÀ£¤O\n";
+                memberStatus += "å…¨å“¡å¢åŠ " + pressure + " é»å£“åŠ›\n";
             if(damage>0)
-                memberStatus += "¥ş­û¨ü¨ì" + damage + " ÂI¶Ë®`\n";
+                memberStatus += "å…¨å“¡å—åˆ°" + damage + " é»å‚·å®³\n";
             members.ForEach(member =>
             {
                 member.Pressure += pressure;
@@ -118,16 +125,16 @@ public class EncounterManager : MonoBehaviour
             members[index].Pressure += pressure;
             members[index].Health -= damage;
             if (pressure > 0)
-                memberStatus += members[index].Name + " ¼W¥[" + pressure + " ÂIÀ£¤O\n";
+                memberStatus += members[index].Name + " å¢åŠ " + pressure + " é»å£“åŠ›\n";
             if (damage > 0)
-                memberStatus += members[index].Name + " ¨ü¨ì" + damage + " ÂI¶Ë®`\n";
+                memberStatus += members[index].Name + " å—åˆ°" + damage + " é»å‚·å®³\n";
         }
 
         foreach(var member in members.ToList())
         {
             if (member.Health <= 0)
             {
-                memberStatus += member.Name + " ¤w°}¤`\n";
+                memberStatus += member.Name + " å·²é™£äº¡\n";
                 Mission.LegacyGain += member.Legacy;
                 members.Remove(member);
             }
@@ -169,7 +176,7 @@ public class EncounterManager : MonoBehaviour
             else
             {
                 //GameOver.
-                Ui.SetResultLog("¤p¶¤¥ş­û°}¤`¡A§A±aµÛ¶¤­û­Ì¿ò¯d¤U¨Óªº¸Ë³Æ©M°]ª«ºMÂ÷¡CÁöµM¥ô°È¨S¦³§¹¦¨¡A¦ı§A±o¨ì¤F§ó¦³»ù­Èªº¿ò²£¡C");
+                Ui.SetResultLog("å°éšŠå…¨å“¡é™£äº¡ï¼Œä½ å¸¶è‘—éšŠå“¡å€‘éºç•™ä¸‹ä¾†çš„è£å‚™å’Œè²¡ç‰©æ’¤é›¢ã€‚é›–ç„¶ä»»å‹™æ²’æœ‰å®Œæˆï¼Œä½†ä½ å¾—åˆ°äº†æ›´æœ‰åƒ¹å€¼çš„éºç”¢ã€‚");
                 currentState = State.PartyWipedout;
             }
         }
