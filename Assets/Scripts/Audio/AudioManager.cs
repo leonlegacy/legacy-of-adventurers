@@ -10,10 +10,21 @@ public class AudioManager : SingtonMono<AudioManager>
     private AudioSource currPlaySounndSource;
 
     [SerializeField]
+    private AudioClip clickButton;
+
+    [SerializeField]
     private AudioClip encounterSuccess;
 
     [SerializeField]
     private AudioClip encounterFail;
+
+    /**
+    * 播放點擊按鈕音效
+    */
+    public void PlayClickButton()
+    {
+        PlayAudio(clickButton);
+    }
 
     /**
     * 遭遇事件成功音效
@@ -42,6 +53,7 @@ public class AudioManager : SingtonMono<AudioManager>
         AudioSource currPlaySounndSource = obj.AddComponent<AudioSource>();
         currPlaySounndSource.playOnAwake = false;
         currPlaySounndSource.loop = true;
+        currPlaySounndSource.volume = 0.5f;
         currPlaySounndSource.PlayOneShot(clip);
         StartCoroutine(PlayedAudio(obj, clip));
     }

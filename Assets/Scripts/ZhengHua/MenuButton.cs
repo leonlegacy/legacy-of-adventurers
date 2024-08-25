@@ -39,6 +39,7 @@ namespace ZhengHua
         /// <param name="eventData"></param>
         public void OnPointerClick(PointerEventData eventData)
         {
+            AudioManager.instance.PlayClickButton();
             OnClickEvent?.Invoke();
             buttonText.color = pressedColor;
         }

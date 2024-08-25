@@ -102,6 +102,8 @@ namespace ZhengHua
         {
             Debug.Log("ChooseMission");
 
+            BGMManager.instance.PlayVillageBgm();
+
             MissionManager.GenerateMissions();
 
             Mission mission = MissionManager.CurrentMission;
@@ -149,6 +151,7 @@ namespace ZhengHua
         private void InMissionOnEnter()
         {
             Debug.Log("InMission");
+            BGMManager.instance.PlayAdventureBgm();
             CreateAdvers();
             MissionCanvas.instance.Show();
             Mission mission = MissionManager.CurrentMission;
@@ -174,7 +177,7 @@ namespace ZhengHua
             Debug.Log("OnGetMissionResult");
 
             int resultGold = 0;
-            if(result.MissionClear)
+            if (result.MissionClear)
             {
                 resultGold = result.MissionReward;
             }
@@ -182,7 +185,7 @@ namespace ZhengHua
             {
                 resultGold = result.LootGold;
             }
-            SaveSystem.instance.playerData.gold+= resultGold;
+            SaveSystem.instance.playerData.gold += resultGold;
             ChangeState(GameState.MissionResult);
         }
 
@@ -200,7 +203,7 @@ namespace ZhengHua
                 GameObject obj = Instantiate(adverPrefab, adverContainer);
                 AdventurerItem item = obj.GetComponent<AdventurerItem>();
                 item.Init(adver.Health, UnityEngine.Random.Range(0, 2) == 1);
-                obj.transform.localPosition = new Vector3((index % 2)* spaceX, row * spaceY, 0f);
+                obj.transform.localPosition = new Vector3((index % 2) * spaceX, row * spaceY, 0f);
                 adverList.Add(item);
             }
         }

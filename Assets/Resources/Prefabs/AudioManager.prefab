@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27a492278507d4db29f373f3bf7b85d3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clickButton: {fileID: 8300000, guid: f73289e45314a4f09a35c7766ea1c7b5, type: 3}
   encounterSuccess: {fileID: 8300000, guid: 9da22d13dafd84a5e94200c771bc2eb8, type: 3}
   encounterFail: {fileID: 8300000, guid: f4ad8817b9d71483cb94623e3350ba77, type: 3}
 --- !u!114 &2490110227043156845
