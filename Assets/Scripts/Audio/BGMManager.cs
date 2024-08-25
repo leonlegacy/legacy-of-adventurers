@@ -15,6 +15,7 @@ public class BGMManager : SingtonMono<BGMManager>
         base.Awake();
         AudioSource = gameObject.AddComponent<AudioSource>();
         AudioSource.playOnAwake = false;
+        AudioSource.volume = 0.5f;
     }
 
     /**
