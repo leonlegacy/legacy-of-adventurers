@@ -32,7 +32,7 @@ namespace ZhengHua
         /// </summary>
         public TMP_Text startButtonText;
 
-        public Action PartyGoEvent;
+        public Action<int> PartyGoEvent;
 
         private List<GameObject> advs = new List<GameObject>();
 
@@ -70,6 +70,7 @@ namespace ZhengHua
             }
 
             hireCost = 0;
+            hireCount = 0;
         }
 
         public override void Hide()
@@ -120,7 +121,7 @@ namespace ZhengHua
 
         public void StartButtonOnClick()
         {
-            PartyGoEvent?.Invoke();
+            PartyGoEvent?.Invoke(hireCost);
         }
 
         #region Mission 相關

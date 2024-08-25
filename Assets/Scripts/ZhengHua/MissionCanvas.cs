@@ -23,11 +23,16 @@ namespace ZhengHua
         /// <summary>
         /// 任務進度條
         /// </summary>
-        public Image missionBar;
+        public Image progressBar;
         /// <summary>
         /// 進度條小人
         /// </summary>
-        public Transform runImage;
+        public Transform progressRunImage;
+
+        /// <summary>
+        /// 任務背景
+        /// </summary>
+        public GameObject tunnel;
 
         private int _runMissionCount = 0;
         private int _totalMissionCount = 0;
@@ -43,25 +48,38 @@ namespace ZhengHua
         {
             base.Show();
 
-            Initialized();
+            UpdateInfo();
 
+            tunnel.SetActive(true);
+
+            EncounterManagerEvent.ExecuteEvent += Excute;
+
+        }
+
+        private void Excute()
+        {
+            _runMissionCount++;
             UpdateInfo();
         }
 
         /// <summary>
         /// 初始化
         /// </summary>
-        private void Initialized()
+        public void Initialized(int totalMissionCount)
         {
             _runMissionCount = 0;
-            _totalMissionCount = 0;
-            missionBar.fillAmount = 0;
-            runImage.localPosition = new Vector3(0, runImage.localPosition.y, 0);
+            _totalMissionCount = totalMissionCount;
+            progressBar.fillAmount = 0;
+            progressRunImage.localPosition = new Vector3(0, progressRunImage.localPosition.y, 0);
         }
 
         public override void Hide()
         {
             base.Hide();
+
+            tunnel.SetActive(false);
+
+            EncounterManagerEvent.ExecuteEvent -= Excute;
         }
 
         /// <summary>
@@ -73,15 +91,16 @@ namespace ZhengHua
             reputationText.text = $"{SaveSystem.instance.playerData.reputation} / 100";
             reputationImage.fillAmount = (float)SaveSystem.instance.playerData.reputation / 100;
 
-
+            progressBar.fillAmount = (float)_runMissionCount / _totalMissionCount;
+            progressRunImage.localPosition = new Vector3(progressBar.rectTransform.sizeDelta.x * progressBar.fillAmount, progressRunImage.localPosition.y, 0);
         }
 
         public void UpdateMission()
         {
             _runMissionCount += 1;
 
-            missionBar.fillAmount = (float)_runMissionCount / _totalMissionCount;
-            runImage.localPosition = new Vector3(missionBar.rectTransform.sizeDelta.x * missionBar.fillAmount, runImage.localPosition.y, 0);
+            progressBar.fillAmount = (float)_runMissionCount / _totalMissionCount;
+            progressRunImage.localPosition = new Vector3(progressBar.rectTransform.sizeDelta.x * progressBar.fillAmount, progressRunImage.localPosition.y, 0);
         }
     }
 }
