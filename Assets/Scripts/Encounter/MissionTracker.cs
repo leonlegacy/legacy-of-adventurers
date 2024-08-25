@@ -13,14 +13,6 @@ public class MissionReport
     {
 
     }
-    public MissionReport(int loot, int reward, int pressure, int legacy, float share)
-    {
-        LootGold = loot;
-        MissionReward = reward;
-        TotalPressure = pressure;
-        TotalLegacy = legacy;
-        shareRate = share;
-    }
 }
 
 public class MissionManagerEvent
@@ -62,12 +54,14 @@ public class MissionTracker : MonoBehaviour
     private int totalGain;
 
 
-    void MissionInitialize()
+    public void MissionInitialize(int totalEncounter, int reward)
     {
         LootedGold = 0;
         LegacyGain = 0;
         totalGain = 0;
         currentEncounterIndex = 0;
+        encounterCount = totalEncounter;
+        missionReward = reward;
         Report.shareRate = shareRate;
     }
 
