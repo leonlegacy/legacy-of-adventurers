@@ -18,7 +18,7 @@ MonoBehaviour:
   EffectAllMembers: 1
   SuccessRate: 100
   SuccessDescription: "\u5E0C\u671B\u6240\u6709\u4EBA\u73A9\u5F97\u958B\u5FC3"
-  FailDescription: "\u5E0C\u671B\u6240\u6709\u4EBA\u73A9\u5F97\u958B\u5FC3"
+  FailDescription: "\u5E0C\u671B\u6240\u6709\u4EBA\u73A9\u5F97\u958B\u5FC3\u3002\u9664\u4E86\u5192\u96AA\u8005\uFF0C\u4ED6\u5011\u5DF2\u7D93\u6B7B\u4E86\u3002"
   Damage: 0
   Pressure: -50
   Gold: 0
