@@ -176,6 +176,8 @@ namespace ZhengHua
         private void MissionResultOnEnter()
         {
             Debug.Log("MissionResult");
+
+            SaveSystem.instance.playerData.days++;
         }
 
         private void MissionResultOnUpdate()
