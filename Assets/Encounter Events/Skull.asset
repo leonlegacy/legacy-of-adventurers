@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3cdc2eb5d9000a4c947a6daed9ac3fe, type: 3}
+  m_Name: Skull
+  m_EditorClassIdentifier: 
+  Title: "\u9AB7\u9ACF"
+  Description: "\u91CE\u751F\u7684\u9AB7\u9ACF\u5F9E\u8349\u53E2\u8DF3\u51FA\u4F86\u4E86\uFF0C\u5C31\u6C7A\u5B9A\u662F\u4F60\u4E86\u5192\u96AA\u8005"
+  Image: {fileID: 21300000, guid: 30da833363b4fa34db31a6a906c37556, type: 3}
+  EffectAllMembers: 0
+  SuccessRate: 80
+  SuccessDescription: "\u5192\u96AA\u8005\u5011\u4E09\u4E0B\u4E94\u9664\u4E8C\uFF0C\u7269\u7406\u6E05\u9664\u4E86\u9AB7\u9ACF\u5011\u7559\u5B58\u4E8E\u4E16\u7684\u907A\u9858\u3002\u4F46\u8AB0\u4E5F\u4E0D\u77E5\u9053\u9019\u4E9B\u9AB7\u9ACF\u751F\u524D\u7684\u907A\u7522\u90FD\u53BB\u4E86\u54EA"
+  FailDescription: "\u518D\u898B\u4E86\uFF01\u6240\u6709\u7684\u5192\u96AA\u8005\n\u5316\u7232\u516C\u6703\u7684\u7DAD\u8B77\u8CBB\u5427"
+  Damage: 0
+  Pressure: 0
+  Gold: 200
+  FailDamage: 50
+  FailPressure: 50
+  FailGold: 0
