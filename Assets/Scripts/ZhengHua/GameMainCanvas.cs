@@ -60,7 +60,7 @@ namespace ZhengHua
             foreach (var adv in AdvManager.instance.Candidates)
             {
                 GameObject obj = Instantiate(prefab, content);
-                AdventurerHandle handle = obj.GetComponent<AdventurerHandle>();
+                HireItem handle = obj.GetComponent<HireItem>();
                 handle.SetData(adv);
                 handle.OnSelectedChangeEvent += UpdateSelected;
                 advs.Add(obj);
@@ -75,7 +75,7 @@ namespace ZhengHua
             GameManager.instance.OnFirstEnterGameOnClick?.Invoke();
             foreach (var adv in advs)
             {
-                AdventurerHandle handle = adv.GetComponent<AdventurerHandle>();
+                HireItem handle = adv.GetComponent<HireItem>();
                 handle.OnSelectedChangeEvent -= UpdateSelected;
                 Destroy(adv);
             }

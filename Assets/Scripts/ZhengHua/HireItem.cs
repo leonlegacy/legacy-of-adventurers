@@ -6,7 +6,10 @@ using UnityEngine.UI;
 
 namespace ZhengHua
 {
-    public class AdventurerHandle : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
+    /// <summary>
+    /// UI 上的僱傭物件
+    /// </summary>
+    public class HireItem : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler, IPointerClickHandler
     {
         /// <summary>
         /// 姓名文字
