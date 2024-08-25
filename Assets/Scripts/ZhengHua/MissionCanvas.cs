@@ -50,7 +50,7 @@ namespace ZhengHua
 
             UpdateInfo();
 
-            tunnel.SetActive(true);
+            //tunnel.SetActive(true);
 
             EncounterManagerEvent.ExecuteEvent += Excute;
 
@@ -77,7 +77,7 @@ namespace ZhengHua
         {
             base.Hide();
 
-            tunnel.SetActive(false);
+            //tunnel.SetActive(false);
 
             EncounterManagerEvent.ExecuteEvent -= Excute;
         }
