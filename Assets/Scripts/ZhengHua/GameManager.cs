@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace ZhengHua
@@ -15,6 +16,13 @@ namespace ZhengHua
         /// 進入任務所需要的隊伍人數
         /// </summary>
         public int PartyCount = 4;
+
+        /// <summary>
+        /// 冒險者預置物
+        /// </summary>
+        public GameObject adverPrefab;
+        public Transform adverContainer;
+        public List<AdventurerItem> adverList = new List<AdventurerItem>();
 
         public override void Awake()
         {
@@ -87,8 +95,15 @@ namespace ZhengHua
         private void ChooseMissionOnEnter()
         {
             Debug.Log("ChooseMission");
+
+            MissionManager.GenerateMissions();
+
+            Mission mission = MissionManager.CurrentMission;
+
             /// 隊伍需要的人員數量
-            PartyCount = 4;
+            PartyCount = mission.AdventurerCount;
+
+            GameMainCanvas.instance.InitMission(mission);
 
             ///初始化玩家隊伍
             AdvManager.instance.PartyInitialize(PartyCount);
@@ -97,16 +112,28 @@ namespace ZhengHua
             AdvManager.instance.GenerateCandidates();
 
             GameMainCanvas.instance.Show();
+
+            GameMainCanvas.instance.PartyGoEvent += PartyGo;
         }
 
         private void ChooseMissionOnUpdate()
         {
+            ShowPause();
 
         }
 
         private void ChooseMissionOnEnd()
         {
+            GameMainCanvas.instance.PartyGoEvent -= PartyGo;
 
+            GameMainCanvas.instance.Hide();
+        }
+
+        private void PartyGo()
+        {
+            AdvManager.instance.AssignParty();
+
+            ChangeState(GameState.InMission);
         }
         #endregion
 
@@ -114,6 +141,7 @@ namespace ZhengHua
         private void InMissionOnEnter()
         {
             Debug.Log("InMission");
+            CreateAdvers();
         }
 
         private void InMissionOnUpdate()
@@ -124,12 +152,32 @@ namespace ZhengHua
         {
 
         }
+
+        /// <summary>
+        /// 依照隊伍數量建構冒險者
+        /// </summary>
+        private void CreateAdvers()
+        {
+            float spaceX = 2.3f;
+            float spaceY = 2.3f;
+            foreach (var adver in AdvManager.instance.PartyMembers)
+            {
+                int index = AdvManager.instance.PartyMembers.IndexOf(adver);
+                int row = index / 2;
+                GameObject obj = Instantiate(adverPrefab, adverContainer);
+                AdventurerItem item = obj.GetComponent<AdventurerItem>();
+                item.Init(adver.Health, UnityEngine.Random.Range(0, 2) == 1);
+                obj.transform.localPosition = new Vector3((index % 2)* spaceX, row * spaceY, 0f);
+            }
+        }
         #endregion
 
         #region MissionResult
         private void MissionResultOnEnter()
         {
             Debug.Log("MissionResult");
+
+            SaveSystem.instance.playerData.days++;
         }
 
         private void MissionResultOnUpdate()

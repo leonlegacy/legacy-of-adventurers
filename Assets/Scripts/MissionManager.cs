@@ -1,4 +1,4 @@
-using Unity.VisualScripting;
+﻿using Unity.VisualScripting;
 using UnityEngine;
 
 
@@ -61,7 +61,7 @@ public class MissionManager
 
         mission.Name = "Mission " + Random.Range(1, 100);
         mission.Description = "";
-        mission.Difficulty = Random.Range(1, 10);
+        mission.Difficulty = Random.Range(0, 5);
         mission.AdventurerCount = Random.Range(1, 5);
         mission.EncounterCount = Random.Range(1, 5);
         mission.Reward = Random.Range(100, 1000);
