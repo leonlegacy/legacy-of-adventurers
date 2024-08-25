@@ -12,7 +12,7 @@ public class TunnelGenerator : MonoBehaviour
 
     private float lastX = 20f;
 
-    private void Start()
+    private void OnEnable()
     {
         StartCoroutine(GenerateTunnel());
     }

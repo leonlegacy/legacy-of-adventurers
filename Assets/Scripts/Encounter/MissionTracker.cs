@@ -62,6 +62,7 @@ public class MissionTracker : MonoBehaviour
         currentEncounterIndex = 0;
         encounterCount = totalEncounter;
         missionReward = reward;
+        currentEncounterIndex = 0;
         Report.shareRate = shareRate;
     }
 

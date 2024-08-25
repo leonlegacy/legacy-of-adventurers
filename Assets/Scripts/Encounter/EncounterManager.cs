@@ -182,6 +182,12 @@ public class EncounterManager : MonoBehaviour
         }
         else if(currentState == State.PartyWipedout)
         {
+            currentState = State.Waiting;
+            Ui.ShowButton(Ui.BtnExecute);
+            Ui.ShowButton(Ui.BtnRetreat);
+            Ui.HideButton(Ui.BtnContinue);
+            Ui.ShowEncounter();
+            GetRandomEncounter();
             //Mission failed.
             Mission.MissionFailed();
         }
