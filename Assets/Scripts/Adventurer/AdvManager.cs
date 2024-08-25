@@ -45,12 +45,12 @@ public class AdvManager : SingtonMono<AdvManager>
         Candidates = new Adventurer[10];
         var nameGenerator = new NameGenerator();
 
-        for(int i=0; i<10; i++)
+        for (int i = 0; i < 10; i++)
         {
             Candidates[i] = new Adventurer();
             var candidate = Candidates[i];
             candidate.Name = nameGenerator.RandomName();
-            candidate.Health = Random.Range(1, 20);
+            candidate.Health = Random.Range(1, 120);
             candidate.Cost = (int)(candidate.Health * 10);
             candidate.Legacy = Random.Range(100, 250);
 
@@ -59,7 +59,7 @@ public class AdvManager : SingtonMono<AdvManager>
             //worth: 100 - 250
         }
     }
-    
+
     /// <summary>
     /// 選擇招募人員
     /// </summary>
@@ -72,7 +72,7 @@ public class AdvManager : SingtonMono<AdvManager>
         {
             // Warning for exceeding amount limit.
             return;
-        }    
+        }
 
         Selections[id] = !Selections[id];
         selectedMembers = (Selections[id]) ? selectedMembers + 1 : selectedMembers - 1;
@@ -85,18 +85,18 @@ public class AdvManager : SingtonMono<AdvManager>
     {
         //This is called when party members are all set.
 
-        if(selectedMembers < requiredMembers)
+        if (selectedMembers < requiredMembers)
         {
             // Warning for not enough members.
             return;
         }
 
-        for(int i=0; i<Selections.Length; i++)
+        for (int i = 0; i < Selections.Length; i++)
         {
             if (Selections[i])
                 PartyMembers.Add(Candidates[i]);
         }
     }
 
-    
+
 }
