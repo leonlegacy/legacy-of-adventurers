@@ -28,12 +28,12 @@ namespace ZhengHua
 
         private int _fullHp = 1;
         private int _nowHp = 0;
-        
+
         public TMP_Text hpText;
         public Image hpBar;
 
         private bool _isDead;
-        
+
         private bool _isMale;
 
         public void Awake()
@@ -44,11 +44,12 @@ namespace ZhengHua
         /// <summary>
         /// 初始化
         /// </summary>
-        public void Init(int targetHp = 1, bool targetIsMale = false)
+        public void Init(int targetHp = 1, bool targetIsMale = false, Sprite spriteHead = null)
         {
             _fullHp = targetHp;
             Hp = _fullHp;
             isMale = targetIsMale;
+            if (spriteHead != null) head.sprite = spriteHead;
         }
 
         /// <summary>
