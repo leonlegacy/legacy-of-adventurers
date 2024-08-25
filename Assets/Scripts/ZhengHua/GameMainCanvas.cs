@@ -18,6 +18,7 @@ namespace ZhengHua
         /// 公會聲望
         /// </summary>
         public TMP_Text reputationText;
+        public Image reputationImage;
         /// <summary>
         /// 傭兵僱用費用
         /// </summary>
@@ -97,7 +98,7 @@ namespace ZhengHua
         public void UpdateHireCost(int cost = 0)
         {
             hireCost += cost;
-            hireCostText.text = hireCost.ToString();
+            hireCostText.text = $"$ {hireCost}";
         }
 
         /// <summary>
@@ -106,8 +107,10 @@ namespace ZhengHua
         public void UpdateInfo()
         {
             goldText.text = SaveSystem.instance.playerData.gold.ToString();
-            reputationText.text = SaveSystem.instance.playerData.reputation.ToString();
-            hireCostText.text = hireCost.ToString();
+            reputationText.text = $"{SaveSystem.instance.playerData.reputation} / 100";
+            reputationImage.fillAmount = (float)SaveSystem.instance.playerData.reputation / 100;
+            hireCostText.text = $"{hireCost}";
+
             UpdateHireCost();
             startButton.interactable = GameManager.instance.ParayIsFull;
             startButtonText.text = GameManager.instance.ParayIsFull ? $"出發" : $"僱傭: {hireCount}/{GameManager.instance.PartyCount}";
