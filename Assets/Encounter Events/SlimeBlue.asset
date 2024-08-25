@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SlimeBlue
   m_EditorClassIdentifier: 
   Title: "\u53F2\u840A\u59C6-\u9752"
-  Description: "\u61C9\u8A72\u4E0D\u662F\u8F49\u751F\u904E\u4F86\u7684\uFF0C\u7E3D\u4E4B\u8981\u6230\u9B25\uFF01"
+  Description: "\u4E00\u96BB\u770B\u8D77\u4F86\u5F88\u773C\u719F\u7684\u53F2\u840A\u59C6\u51FA\u73FE\u5728\u4F60\u5011\u9762\u524D\u3002\u61C9\u8A72\u4E0D\u662F\u8F49\u751F\u904E\u4F86\u7684\uFF0C\u7E3D\u4E4B\u8981\u6230\u9B25\uFF01"
   Image: {fileID: 21300000, guid: c66b10ce5210990448ec662210d79da1, type: 3}
   EffectAllMembers: 0
   SuccessRate: 20

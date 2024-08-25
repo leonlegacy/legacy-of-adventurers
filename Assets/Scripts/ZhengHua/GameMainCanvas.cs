@@ -32,6 +32,8 @@ namespace ZhengHua
         /// </summary>
         public TMP_Text startButtonText;
 
+        public Action<int> PartyGoEvent;
+
         private List<GameObject> advs = new List<GameObject>();
 
         private int hireCost = 0;
@@ -68,6 +70,7 @@ namespace ZhengHua
             }
 
             hireCost = 0;
+            hireCount = 0;
         }
 
         public override void Hide()
@@ -115,5 +118,26 @@ namespace ZhengHua
             startButton.interactable = GameManager.instance.ParayIsFull;
             startButtonText.text = GameManager.instance.ParayIsFull ? $"出發" : $"僱傭: {hireCount}/{GameManager.instance.PartyCount}";
         }
+
+        public void StartButtonOnClick()
+        {
+            PartyGoEvent?.Invoke(hireCost);
+        }
+
+        #region Mission 相關
+        public TMP_Text missionName;
+        public TMP_Text missionContent;
+        public TMP_Text missionReward;
+        public Image missionRank;
+        public Sprite[] rankSprites;
+
+        public void InitMission(Mission mission)
+        {
+            missionName.text = $"任務名稱: {mission.Name}";
+            missionContent.text = $"任務內容: {mission.Description}";
+            missionReward.text = $"任務報酬: {mission.Reward}";
+            missionRank.sprite = rankSprites[mission.Difficulty];
+        }
+        #endregion
     }
 }

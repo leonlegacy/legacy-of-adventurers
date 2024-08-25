@@ -26,12 +26,7 @@ namespace ZhengHua
             }
             else
             {
-                playerData = new PlayerData
-                {
-                    gold = 1000,
-                    days = 1,
-                    reputation = 0
-                };
+                playerData = GetDefaultData;
             }
         }
 
@@ -44,6 +39,19 @@ namespace ZhengHua
             set
             {
                 PlayerPrefs.SetInt("FirstEnterGame", value ? 1 : 0);
+            }
+        }
+
+        public PlayerData GetDefaultData
+        {
+            get
+            {
+                return new PlayerData
+                {
+                    gold = 1000,
+                    days = 1,
+                    reputation = 80
+                };
             }
         }
     }

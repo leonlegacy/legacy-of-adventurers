@@ -32,12 +32,7 @@ namespace ZhengHua
 
         public void OnNewGameClick()
         {
-            SaveSystem.instance.playerData = new PlayerData
-            {
-                gold = 1000,
-                days = 1,
-                reputation = 0
-            };
+            SaveSystem.instance.playerData = SaveSystem.instance.GetDefaultData;
             SaveSystem.instance.Save();
             LoadManager.instance.LoadScene(GameSceneName);
         }
